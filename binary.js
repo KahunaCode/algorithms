@@ -21,4 +21,4 @@ bs:function binarySearch(list, item){
     }return null;
   }
 
-}
+};
