@@ -1,10 +1,10 @@
 
 //selection sort. takes array, gens new sorted array
 
-module.exports = {
+module.exports = (function() {
 
 
-  fs:  function findSmallest(arr){
+    function findSmallest(arr){
       var smallest = arr[0];
       var smallestIndex = 0;
 
@@ -15,15 +15,19 @@ module.exports = {
         }
       }
       return smallestIndex;
-    },
-
-
-  selSort:  function selectionSort(arr){
-      var newArray = [];
-      for (var i = 0; i < arr.length; i++){
-        var smallest = fs(arr);
-        newArray.push(arr.pop(smallest));
-      }
     }
 
-};
+
+   function selectionSort(arr){
+      var newArray = [];
+      var numLoops = arr.length;
+      for (var i = 0; i < numLoops; i++){
+        var smallest = findSmallest(arr);
+        newArray.push(arr.splice(smallest,1)[0]);
+      }
+      return newArray;
+    }
+
+  return {findSmallest:findSmallest, selectionSort:selectionSort};
+
+}());
